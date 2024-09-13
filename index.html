@@ -15,7 +15,7 @@
             padding: 0;
         }
 
-      .container {
+       .container {
             display: flex;
             flex-direction: column;
             max-width: 1000px;
@@ -26,12 +26,12 @@
         }
 
         @media (min-width: 768px) {
-          .container {
+           .container {
                 flex-direction: row;
             }
         }
 
-      .main-content {
+       .main-content {
             flex: 1;
             padding: 20px;
         }
@@ -70,7 +70,7 @@
             background-color: #45a049;
         }
 
-      .sub-content {
+       .sub-content {
             padding: 20px;
         }
 
@@ -81,7 +81,7 @@
             margin-bottom: 15px;
         }
 
-      .count-display {
+       .count-display {
             font-size: 18px;
             font-weight: bold;
             margin-top: 10px;
@@ -115,17 +115,46 @@
         };
         initialImage.onerror = function () {
             console.error('初始图片加载失败。');
+            // 尝试重新加载初始图片
+            initialImage.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80';
         };
         initialImage.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80';
         countButton.addEventListener('click', function () {
             count++;
             countDisplay.textContent = `计数：${count}`;
             if (count === 10) {
-                forestImage.src = 'https://imgur.la/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2024-09-11-203356.02XQr'; // 替换为你的第一张新森林图片路径
+                const img10 = new Image();
+                img10.onload = function () {
+                    forestImage.src = 'https://imgur.la/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2024-09-11-203356.02XQr';
+                };
+                img10.onerror = function () {
+                    console.error('图片加载失败（计数为 10 时）。');
+                    // 尝试重新加载图片
+                    img10.src = 'https://imgur.la/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2024-09-11-203356.02XQr';
+                };
+                img10.src = 'https://imgur.la/image/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2024-09-11-203356.02XQr';
             } else if (count === 100) {
-                forestImage.src = 'forestImage2.jpg'; // 替换为你的第二张新森林图片路径
+                const img100 = new Image();
+                img100.onload = function () {
+                    forestImage.src = 'forestImage2.jpg';
+                };
+                img100.onerror = function () {
+                    console.error('图片加载失败（计数为 100 时）。');
+                    // 尝试重新加载图片
+                    img100.src = 'forestImage2.jpg';
+                };
+                img100.src = 'forestImage2.jpg';
             } else if (count === 1000) {
-                forestImage.src = 'forestImage3.jpg'; // 替换为你的第三张新森林图片路径
+                const img1000 = new Image();
+                img1000.onload = function () {
+                    forestImage.src = 'forestImage3.jpg';
+                };
+                img1000.onerror = function () {
+                    console.error('图片加载失败（计数为 1000 时）。');
+                    // 尝试重新加载图片
+                    img1000.src = 'forestImage3.jpg';
+                };
+                img1000.src = 'forestImage3.jpg';
             }
         });
     </script>
